@@ -1,10 +1,10 @@
 public class Grades {
     private int[] grades;
-    private int size;
+    private int size; // ile dodałam do tablicy elementów
 
-    public Grades() {
+    public Grades() { // tablica 10 ocen
         this.grades = new int[10];
-        this.size=0;
+        this.size = 0;
     }
 
     public void add(int value) {
@@ -15,24 +15,25 @@ public class Grades {
         this.size++;
     }
 
-    public int lastGrade (){
-        int value = this.grades[this.size-1];
+    public int lastGrade() {
+        int value = this.grades[this.size - 1];
         return value;
 
     }
 
-    public float gradesAverage(){
+    public float gradesAverage() {
 
-        float average = (this.grades[0]+this.grades[1]+this.grades[2]+this.grades[3]+this.grades[4]+this.grades[5]
-                +this.grades[6]+this.grades[7]+this.grades[8]+this.grades[9])/10f;
+        int sum = 0;
+
+
+        for (int i = 0; i <= size - 1; i++) {
+            sum = sum + grades[i];
+        }
+        float average = sum / (float) size;
+
         return average;
-
     }
-
 }
-
-
-
 
 
 //    int[] grades = new int [10]
