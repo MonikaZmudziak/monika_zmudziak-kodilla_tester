@@ -6,7 +6,7 @@ public class RandomNumbers {
     int max;
 
     public RandomNumbers() {
-        min = 31;
+        min = 31; // startowa poza zakrsem warości musi byc
     }
 
     public void generateRandomNumbers() {
