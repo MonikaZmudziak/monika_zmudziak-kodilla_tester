@@ -1,6 +1,4 @@
-package com.kodilla.inheritance.abstracts.homework;
-
-import javax.print.Doc;
+package com.kodilla.abstracts.homework;
 
 public class JobMain {
     public static void main(String[] args) {

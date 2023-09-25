@@ -1,4 +1,4 @@
-package com.kodilla.inheritance.abstracts;
+package com.kodilla.abstracts;
 
 public class AnimalProcessor {
 

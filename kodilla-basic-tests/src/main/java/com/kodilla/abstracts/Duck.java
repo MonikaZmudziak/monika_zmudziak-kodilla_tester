@@ -1,6 +1,4 @@
-package com.kodilla.inheritance.abstracts;
-
-import com.kodilla.inheritance.abstracts.Animal;
+package com.kodilla.abstracts;
 
 public class Duck extends Animal {
 
