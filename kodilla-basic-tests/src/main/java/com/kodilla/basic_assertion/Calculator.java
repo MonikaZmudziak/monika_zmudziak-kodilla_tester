@@ -10,7 +10,7 @@ public class Calculator {
         return a - b;
     }
 
-    public int square (int a){
+    public double square (double a){
         return a * a;
     }
 
