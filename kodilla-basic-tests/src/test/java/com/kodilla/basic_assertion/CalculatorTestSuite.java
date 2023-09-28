@@ -25,9 +25,23 @@ public class CalculatorTestSuite {
     }
 
     @Test
-    public void squareResult() {
+    public void squareResultLessThanZero() {
         Calculator calculator = new Calculator();
         double a = -4;
+        double squareResult = calculator.square(a);
+        assertEquals(16, squareResult,0.01);
+    }
+    @Test
+    public void squareResultZero() {
+        Calculator calculator = new Calculator();
+        double a = 0;
+        double squareResult = calculator.square(a);
+        assertEquals(0, squareResult,0.01);
+    }
+    @Test
+    public void squareResultGreaterThanZero() {
+        Calculator calculator = new Calculator();
+        double a = 4;
         double squareResult = calculator.square(a);
         assertEquals(16, squareResult,0.01);
     }
