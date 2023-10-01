@@ -83,9 +83,9 @@ public class Bank {
         double sum=0;
 
         for (int i = 0; i <= size - 1; i++) {
-            sum = cashMachines[i].averageOfPayments()+ sum;
+            sum = cashMachines[i].paymentsSum()+ sum;
         }
-        return sum/size;
+        return sum/allPayments();
 
     }
 
@@ -98,9 +98,9 @@ public class Bank {
         double sum=0;
 
         for (int i = 0; i <= size - 1; i++) {
-            sum = cashMachines[i].averageOfDeposits()+ sum;
+            sum = cashMachines[i].depositSum()+ sum;
         }
-        return sum/size;
+        return sum/allDeposits();
     }
 }
 
