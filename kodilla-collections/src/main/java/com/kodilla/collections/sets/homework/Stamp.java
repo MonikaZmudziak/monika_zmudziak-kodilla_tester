@@ -6,7 +6,7 @@ public class Stamp {
     private String name;
     private double height;
     private double width;
-    boolean isStamped;
+    private boolean isStamped;
 
     public Stamp(String name, double height, double width, boolean isStamped) {
         this.name = name;
