@@ -49,7 +49,7 @@ class FlightFinderTestSuite {
 
         // then
         assertEquals(expected, result);
-    }
+    }git
 
     @Test
     public void testFindFlightsToWhenFlightNotExist() {
