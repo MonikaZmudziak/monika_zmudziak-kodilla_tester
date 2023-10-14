@@ -36,4 +36,28 @@ class ApplicationTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void testGetTeacherNameUndefined(){
+        //given
+        Application application = new Application();
+        String expected="<undefined>";
+        //when
+        Student student = new Student("Emil Nowakowski", null);
+        String result = application.getTeacherName(student);
+        //then
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetTeacherNameNotUndefined(){
+        //given
+        Application application = new Application();
+        String expected="Anna Nowak";
+        //when
+        Student student = new Student("Piotr Nowak", new Teacher("Anna Nowak"));
+        String result = application.getTeacherName(student);
+        //then
+        assertEquals(expected, result);
+    }
+
 }
