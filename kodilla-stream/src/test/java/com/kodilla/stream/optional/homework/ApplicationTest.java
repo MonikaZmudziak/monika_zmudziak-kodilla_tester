@@ -1,8 +1,10 @@
 package com.kodilla.stream.optional.homework;
 
+import com.kodilla.optional.homework.Application;
+import com.kodilla.optional.homework.Student;
+import com.kodilla.optional.homework.Teacher;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.plaf.synth.SynthTableUI;
 import java.util.ArrayList;
 import java.util.List;
 
