@@ -38,6 +38,7 @@ public class UsersManager {
         List<User> users = UsersRepository.getUsersList()
                 .stream()
                 .filter(user->user.getAge()>givenAge)
+                .peek(user-> System.out.println("Peek po filter "+ user.getUsername()))
                 .collect(Collectors.toList());
         return users ;
     }
