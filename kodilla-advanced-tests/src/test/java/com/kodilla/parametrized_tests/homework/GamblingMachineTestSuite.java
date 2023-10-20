@@ -4,10 +4,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Arrays.stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GamblingMachineTestSuite {
@@ -52,5 +53,17 @@ class GamblingMachineTestSuite {
     @MethodSource(value = "com.kodilla.parametrized_tests.homework.GamblingMachineTestSuite#invalidNumberCount")
     public void testInvalidNumberCount(Set<Integer> input) {
         assertThrows(InvalidNumbersException.class, () -> gamblingMachine.howManyWins(input));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/gamblingMachineValues_wrongSize.csv")
+    public void testWrongUserNumber(String number) {
+        System.out.println(number);
+        String[] numbers = number.split(","); //tab. stringow
+        List<String> stringNumbers = Arrays.asList(numbers); // lista stringów
+        Set<Integer> numbersAsSet = stringNumbers.stream()
+                .map(n -> Integer.parseInt(n)) //lista Inteagerów
+                .collect(Collectors.toSet());
+        assertThrows(InvalidNumbersException.class, () -> gamblingMachine.howManyWins(numbersAsSet));
     }
 }
