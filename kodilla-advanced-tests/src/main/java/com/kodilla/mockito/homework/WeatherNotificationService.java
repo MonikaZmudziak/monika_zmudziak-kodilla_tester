@@ -7,47 +7,47 @@ import java.util.Map;
 import java.util.Set;
 
 public class WeatherNotificationService {
-
-    private Map<User, Set<Location>> subscriptions = new HashMap<>(); // jeden unikalny user do kilku unikalnych lokalizacji
+    private Map<Location, Set<User>> subscriptions = new HashMap<>(); // jeden unikalny user do kilku unikalnych lokalizacji
 
 
     public void addSubscriber(User user, Location location) {
 
-        boolean hasUser = subscriptions.containsKey(user);
-        if (!hasUser) {
-            subscriptions.put(user, new HashSet<Location>());
+        boolean hasLocation = subscriptions.containsKey(location);
+        if (!hasLocation) { //czy lokalizacja nie została jeszcze dodana, jak nie to dodaje lokacje tworząc  nowego seta dla userów
+            subscriptions.put(location, new HashSet<User>());
         }
 
-        Set<Location> userLocations = subscriptions.get(user);// set ze śledzonymi lokalizacjami dla danego usera
-        userLocations.add(location);
-
+        Set<User> locationSubscriber = subscriptions.get(location);// set z userami danej lokalizacji
+        locationSubscriber.add(user);
     }
 
     public void sendNotification(WeatherNotification weatherNotification, Location location) {
-        for (Map.Entry<User, Set<Location>> entry : subscriptions.entrySet()) { //czy w secie jest dana lokalizacja, jak tak to wysyłam powiadomienie
-            Set<Location> userLocations = entry.getValue();
-            User user = entry.getKey();
+        boolean hasLocation = subscriptions.containsKey(location);
+        if (!hasLocation) {
+            return;
+        }
 
-            if(userLocations.contains(location)) {
-                user.receive(weatherNotification);
-            }
+        Set<User> locationSubscribers = subscriptions.get(location); // pobranie seta userów danej lokalizacji, wartość dla klucza
+        for (User user : locationSubscribers) { // każdy pojedyńczy user
+            user.receive(weatherNotification);
         }
     }
 
     public void unsubscribeUser(User user) {
-        subscriptions.remove(user);
-    }
-
-    public void removeLocation(Location location) {
-        for (Map.Entry<User, Set<Location>> entry : subscriptions.entrySet()) {
-            Set<Location> userLocations = entry.getValue(); //getValue -wartości z setów
-           userLocations.remove(location); //or entry.getValue().remove(location);
+        for (Location location : subscriptions.keySet()) { //same  (lokalizaje)
+            Set<User> locationSubscribers = subscriptions.get(location);               //pobranie seta userów dla danej lokaliziacji
+            locationSubscribers.remove(user);
         }
     }
 
-    public void removeSubscriptionFromLocation(User user, Location location){
-        Set<Location>userLocation = subscriptions.get(user);
-        userLocation.remove(location);
+    public void removeLocation(Location location) {
+        subscriptions.remove(location);
+
+    }
+
+    public void removeSubscriptionFromLocation(User user, Location location) {
+        Set<User> locationSubscribers = subscriptions.get(location);
+        locationSubscribers.remove(user);
 
     }
 

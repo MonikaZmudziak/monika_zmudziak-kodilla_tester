@@ -5,14 +5,6 @@ import org.mockito.Mockito;
 
 class WeatherNotificationServiceTestSuite {
 
-//    WeatherNotificationService weatherNotificationService = new WeatherNotificationService();
-//    User user1 = Mockito.mock(User.class);
-//    User user2 = Mockito.mock(User.class);
-//
-//    Location location1 = Mockito.mock(Location.class);
-//    Location location2 = Mockito.mock(Location.class);
-
-
     //Osoba zainteresowana może zostać zapisana do danej lokalizacji i zacznie otrzymywać powiadomienia
     @Test
     public void addUserToLocation() {
@@ -32,7 +24,7 @@ class WeatherNotificationServiceTestSuite {
         weatherNotificationService.sendNotification(notification, location1);
         weatherNotificationService.sendNotification(notification, location2);
 
-        Mockito.verify(user1, Mockito.times(1)).receive(notification);
+        Mockito.verify(user1, Mockito.times(1)).receive(notification); // zweryfikuj na jakim obiekcie ile i co zostało wywołane
         Mockito.verify(user2, Mockito.times(1)).receive(notification);
 
     }
