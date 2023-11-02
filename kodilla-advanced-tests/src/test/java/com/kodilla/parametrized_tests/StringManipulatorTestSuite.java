@@ -69,7 +69,7 @@ class StringManipulatorTestSuite {
 //        );
 //}
 @ParameterizedTest
-@MethodSource(value = "com.kodilla.parametrized_tests.StringSources.provideStringsForTestingLength")
+@MethodSource(value = "com.kodilla.parametrized_tests.StringSources#provideStringsForTestingLength")
 public void shouldCalculateStringLengthWithoutSpaces1(String input, int expected) {
     assertEquals(expected, manipulator.getStringLengthWithoutSpaces(input));
 }
