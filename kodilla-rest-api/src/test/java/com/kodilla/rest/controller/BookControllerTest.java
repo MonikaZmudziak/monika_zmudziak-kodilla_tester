@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookControllerTest {
 
@@ -27,5 +28,19 @@ class BookControllerTest {
 
         //then
         assertThat(result).hasSize(2);
+    }
+
+    @Test
+    void shouldAddBooks() {
+        //given
+        BookService bookService = new BookService();
+        BookController bookController = new BookController(bookService);
+        bookController.addBook(new BookDto("Harry Potter and the Deathly Hallows", "J. K. Rowling"));
+        bookController.addBook(new BookDto("Harry Potter and the Goblet of Fire", "J. K. Rowling"));
+        //when
+        List<BookDto> result = bookController.getBooks();
+        //then
+        assertThat(result).hasSize(2);
+//        assertEquals(2, bookController.getBooks().size());
     }
 }
