@@ -59,9 +59,26 @@ class BookControllerRestAssuredTest {
         // given
         BookDto bookDto = new BookDto("Title 1", "Author 2");
         // when
-        bookController.addBook(bookDto);
+        given().contentType(ContentType.JSON)
+                .body(bookDto)
+                .when()
+                .post("/books")
+                .then()
+                .assertThat()
+                .statusCode(200);
+
         //then
         Mockito.verify(bookService).addBook(bookDto);
     }
+
+//    @Test
+//    void shouldAddBook() {
+//        // given
+//        BookDto bookDto = new BookDto("Title 1", "Author 2");
+//        // when
+//       bookController.addBook(bookDto);
+//        //then
+//        Mockito.verify(bookService).addBook(bookDto);
+//    }
 }
 
