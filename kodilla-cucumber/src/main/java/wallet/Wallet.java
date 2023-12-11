@@ -19,4 +19,9 @@ public class Wallet {
         System.out.println(display);
         return display;
     }
+
+    public void debit(int money) {
+        this.balance -= money;
+    }
+
 }
